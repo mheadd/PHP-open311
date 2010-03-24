@@ -128,6 +128,7 @@ class Open311 extends APIBaseClass {
 	
 	/**
 	 * Get a list of 311 Service Types.
+	 * @return unknown_type
 	 */
 	public function selectService(){
 		
@@ -155,7 +156,7 @@ class Open311 extends APIBaseClass {
 	 * @param $media_url 
 	 */
 	public function createRequest($service_code, $lat=NULL, $lon=NULL, $address_string=NULL, $customer_email=NULL, $device_id=NULL, 
-				      			  $first_name=NULL, $last_name=NULL, $phone_number=NULL, $description=NULL, $media_url=NULL) {
+				      			  $account_id=NULL, $first_name=NULL, $last_name=NULL, $phone_number=NULL, $description=NULL, $media_url=NULL) {
 		
 		$this->service_code = $service_code;
 		$this->lat = $lat;
@@ -163,6 +164,7 @@ class Open311 extends APIBaseClass {
 		$this->address_string = urlencode($address_string);
 		$this->customer_email = $customer_email;
 		$this->device_id = $device_id;
+		$this->account_id = $account_id;
 		$this->first_name = $first_name;
 		$this->last_name = $last_name;
 		$this->phone_number = $phone_number;
@@ -210,7 +212,7 @@ class Open311 extends APIBaseClass {
 			case 'create_request':
 				$request_url .= "&service_code=$this->service_code&lat=$this->lat&lon=$this->lon";
 				$request_url .= "&address_string=$this->address_string&customer_email=$this->customer_email";
-				$request_url .= "&device_id=$this->device_id&first_name=$this->first_name";
+				$request_url .= "&device_id=$this->device_id&account_id=$this->account_id&first_name=$this->first_name";
 				$request_url .= "&last_name=$this->last_name&phone_number=$this->phone_number&description=$this->description";
 				$request_url .= "&media_url=$this->media_url";
 				break;
