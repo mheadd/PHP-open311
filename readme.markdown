@@ -6,7 +6,7 @@ PHPOpen311 is a set of PHP classes for working with [the Open311 API](http://ope
 Usage
 =====
 
-<code>
+<pre>
 <?php    
 
 include('classes/PHPOpen311.php');
@@ -40,7 +40,7 @@ catch (Exception $ex) {
 }
 
 ?>
-</code>
+</pre>
 
 Output
 ======
