@@ -47,7 +47,7 @@ catch (Exception $ex) {
 }
 
 ?>
-<code>
+</code>
 
 Output
 ======
