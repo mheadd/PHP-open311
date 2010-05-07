@@ -130,7 +130,11 @@ class Open311 extends APIBaseClass {
 	
 	/**
 	 * Get a list of 311 Service Types.
+<<<<<<< HEAD:classes/PHPOpen311.php
 	 * @return string
+=======
+	 * @return unknown_type
+>>>>>>> 6ae93157c66a2e03e4974263afac26cc2680cf95:classes/PHPOpen311.php
 	 */
 	public function selectService(){
 		
