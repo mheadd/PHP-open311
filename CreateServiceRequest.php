@@ -15,7 +15,7 @@
  * PHPOpen311 is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ * GNU Lesser General Public License for more details.
  * 
  * You should have received a copy of the GNU Lesser General Public License
  * along with PHPOpen311.  If not, see <http://www.gnu.org/licenses/>.
@@ -40,6 +40,7 @@ $lon = '-122.4212043';
 $address_string = '123 Some Street, San Francisco, CA 94114';
 $customer_email = 'john_q_public@gmail.com';
 $device_id = 'se4H173nxaQsddl';
+$account_id = '1234567890';
 $first_name = 'John';
 $last_name = 'Public';
 $phone_number = '4151234567';
@@ -53,7 +54,7 @@ try {
 	
 	// Create a new 311 Service request.
 	$open311->createRequest($service_code, $lat, $lon, $address_string, $customer_email, $device_id, 
-							$first_name, $last_name, $phone_number, $description, $media_url);	
+				$account_id, $first_name, $last_name, $phone_number, $description, $media_url);	
 							
 	$createRequestXML = new SimpleXMLElement($open311->getOutput());
 	

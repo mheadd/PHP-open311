@@ -42,9 +42,9 @@ class APIBaseClass {
 	protected $info;
 	 
 	/**
-	 * Class constructor.
-	 *
-	 * @param $base_url
+	 * Class constructor.	 *
+	 * @param string $base_url
+	 * @return null
 	 */
 	protected function __construct($base_url) {
 		$this->base_url = $base_url;
@@ -53,6 +53,7 @@ class APIBaseClass {
 	
 	/**
 	 * Get the output of a cURL request.
+	 * @return string
 	 * 
 	 */
 	public function getOutput() {
@@ -61,7 +62,7 @@ class APIBaseClass {
 	
 	/**
 	 * Get information about the last cURL request made.
-	 *
+	 * @return string
 	 */
 	public function getInfo() {
 		return $this->info;
@@ -70,9 +71,9 @@ class APIBaseClass {
 	/**
 	 * Method to log API request outcome.
 	 * Can be overriden in derived classes for custom logging.
-	 *
-	 * @param $logFile
-	 * @param $message
+	 * @param string $logFile
+	 * @param string $message
+	 * @return null
 	 */
 	protected function logResults($logFile, $message) {
 		$loghandle = fopen($logFile, 'a');
@@ -119,6 +120,7 @@ class Open311 extends APIBaseClass {
 	 * @param $base_url
 	 * @param $api_key
 	 * @param $city_id
+	 * @return null
 	 */
 	public function __construct($base_url, $api_key, $city_id) {
 		$this->api_key = $api_key;
@@ -128,6 +130,7 @@ class Open311 extends APIBaseClass {
 	
 	/**
 	 * Get a list of 311 Service Types.
+	 * @return string
 	 */
 	public function selectService(){
 		
@@ -141,21 +144,22 @@ class Open311 extends APIBaseClass {
 	
 	/**
 	 * Create a new 311 Service Request.
-	 * @param $service_code
-	 * @param $lat
-	 * @param $lon
-	 * @param $address_string 
-	 * @param $customer_email
-	 * @param $device_id 
-	 * @param $account_id 
-	 * @param $first_name
-	 * @param $last_name
-	 * @param $phone_number
-	 * @param $description 
-	 * @param $media_url 
+	 * @param string $service_code
+	 * @param string $lat
+	 * @param string $lon
+	 * @param string $address_string 
+	 * @param string $customer_email
+	 * @param string $device_id 
+	 * @param string $account_id 
+	 * @param string $first_name
+	 * @param string $last_name
+	 * @param string $phone_number
+	 * @param string $description 
+	 * @param string $media_url
+	 * @return string
 	 */
 	public function createRequest($service_code, $lat=NULL, $lon=NULL, $address_string=NULL, $customer_email=NULL, $device_id=NULL, 
-				      			  $first_name=NULL, $last_name=NULL, $phone_number=NULL, $description=NULL, $media_url=NULL) {
+				      			  $account_id=NULL, $first_name=NULL, $last_name=NULL, $phone_number=NULL, $description=NULL, $media_url=NULL) {
 		
 		$this->service_code = $service_code;
 		$this->lat = $lat;
@@ -163,6 +167,7 @@ class Open311 extends APIBaseClass {
 		$this->address_string = urlencode($address_string);
 		$this->customer_email = $customer_email;
 		$this->device_id = $device_id;
+		$this->account_id = $account_id;
 		$this->first_name = $first_name;
 		$this->last_name = $last_name;
 		$this->phone_number = $phone_number;
@@ -182,7 +187,8 @@ class Open311 extends APIBaseClass {
 	
 	/**
 	 * Get the status of a specific 311 Service Request.
-	 * @param $service_request_id
+	 * @param int $service_request_id
+	 * @return string
 	 */
 	public function statusUpdate($service_request_id) {
 		
@@ -210,7 +216,7 @@ class Open311 extends APIBaseClass {
 			case 'create_request':
 				$request_url .= "&service_code=$this->service_code&lat=$this->lat&lon=$this->lon";
 				$request_url .= "&address_string=$this->address_string&customer_email=$this->customer_email";
-				$request_url .= "&device_id=$this->device_id&first_name=$this->first_name";
+				$request_url .= "&device_id=$this->device_id&account_id=$this->account_id&first_name=$this->first_name";
 				$request_url .= "&last_name=$this->last_name&phone_number=$this->phone_number&description=$this->description";
 				$request_url .= "&media_url=$this->media_url";
 				break;
@@ -252,6 +258,13 @@ class ServiceType {
 	private $service_name;
 	private $service_description;
 	
+	/**
+	 * Classd constructor
+	 *
+	 * @param int $service_code
+	 * @param string $service_name
+	 * @param string $service_description
+	 */
 	public function __construct($service_code, $service_name, $service_description) {
 		$this->service_code = $service_code;
 		$this->service_name = $service_name;
