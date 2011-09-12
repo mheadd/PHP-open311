@@ -1,7 +1,11 @@
 Overview
 ========
 
-PHPOpen311 is a set of PHP classes for working with [the Open311 API](http://open311.org/). 
+PHPOpen311 is a set of PHP classes for working with [the Open311 API](http://open311.org/).
+
+Note - this library was developed for use with the first version of the Open311 API.  It is not compatible with the latest version of the Open311 spec.
+
+To obtain a PHP library that was developed specifically for V2 of the Open311 spec, look [here](https://github.com/codeforamerica/open311_php).
 
 Usage
 =====
