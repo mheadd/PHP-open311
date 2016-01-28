@@ -10,7 +10,7 @@ To obtain a PHP library that was developed specifically for V2 of the Open311 sp
 Usage
 =====
 
-<pre>
+```php
 <?php
 
 // Include the Open 311 classes.
@@ -50,7 +50,7 @@ catch (Exception $ex) {
 }
 
 ?>
-</pre>
+```
 
 Output
 ======
